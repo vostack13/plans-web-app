@@ -1,0 +1,9 @@
+:local(.icon) {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.svg {
+	fill: #FF0000;
+}
