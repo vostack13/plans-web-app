@@ -1,18 +1,13 @@
-import Icons from 'app/common/sv-ui/Icons';
+import Main from './Main';
+import {Provider} from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const App = () => {
-	return <div>
-		<h1>Hello, world!</h1>
-
-		<p>
-			<Icons />
-		</p>
-	</div>
-}
+import store from './redux/store';
 
 ReactDOM.render(
-	<App />,
+	<Provider store={store()}>
+		<Main />
+	</Provider>,
+
 	document.getElementById('root'),
 );
