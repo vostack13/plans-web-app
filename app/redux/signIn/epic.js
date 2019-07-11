@@ -9,15 +9,9 @@ export const getSignInEpic = action$ => action$.pipe(
 	ofType(SIGN_IN_GET_REQUEST),
 
 	map(action => {
-		console.log('action 1: ', action);
-		const CancelToken = axios.CancelToken;
-		const source = CancelToken.source();
-
+		const source = axios.CancelToken.source();
 
 		return {...action, cancelToken: source}
-	}),
-
-	tap(action => {console.log('action 2: ', action);
 	}),
 
 	mergeMap(action => race(
@@ -46,18 +40,10 @@ export const getSignInEpic = action$ => action$.pipe(
 			ofType(SIGN_IN_GET_CANCELLED),
 
 			tap(() => {
-				console.log('action in canceled', action);
 				action.cancelToken.cancel();
 			}),
 
-			// map(() => {console.log('action in canceled', action)}),
 			take(1),
 		),
 	)),
 );
-
-// export const logoutUserEpic = action$ => action$.pipe(
-// 	ofType(USER_LOGOUT),
-
-// 	map(logoutUserSuccess),
-// );
