@@ -9,7 +9,10 @@ router.post('/', function(req, res) {
 		const {email, password} = body;
 
 		if (email === 'admin' && password === '123')
-			res.json({status: 'ok'})
+			res.status(200).json({
+				access_key: '12345',
+				status    : 200,
+			})
 		else
 			res.status(401).json({
 				message: 'Unauthorized',

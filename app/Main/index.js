@@ -1,13 +1,18 @@
+import {changeCheckbox, getSignInRequest} from 'app/redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeCheckbox} from 'app/redux/actions';
 import React from 'react';
 
 const Main = () => {
 	const statusCheckbox = useSelector(state => state.checkbox.status);
 	const dispatch = useDispatch();
 
-	const submitLogin = () => {
-		
+	const submitLogin = event => {
+		event.preventDefault();
+
+		dispatch(getSignInRequest({
+			email   : 'admin',
+			password: '123',
+		}));
 	}
 
 	console.log('statusCheckbox', statusCheckbox);

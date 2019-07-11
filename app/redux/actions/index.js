@@ -1,4 +1,5 @@
 export * from './checkbox';
+export * from './signIn';
 
 export const CHECKBOX_CHANGE = '[CHECKBOX] Change';
 
