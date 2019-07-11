@@ -1,4 +1,4 @@
-import {changeCheckbox, getSignInRequest} from 'app/redux/actions';
+import {changeCheckbox, getSignInCancelled, getSignInRequest} from 'app/redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import React from 'react';
 
@@ -15,7 +15,11 @@ const Main = () => {
 		}));
 	}
 
-	console.log('statusCheckbox', statusCheckbox);
+	const cancelLogin = () => {
+		event.preventDefault();
+
+		dispatch(getSignInCancelled());
+	}
 
 	return <div>
 		<form action="/" method='get' onSubmit={submitLogin}>
@@ -49,6 +53,7 @@ const Main = () => {
 
 			<p>
 				<button type="submit">Войти</button>
+				<button type="reset" onClick={cancelLogin}>Отмена</button>
 			</p>
 		</form>
 	</div>
